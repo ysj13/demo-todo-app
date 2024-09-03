@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface TodoRepository extends JpaRepository<TodoEntity, String> {
 
-    @Query(value = "select * from todo_entity where user_id = :userId", nativeQuery = true)
-    List<TodoEntity> findByUserIdQuery(@Param("userId") String userId);
+    @Query(value = "select t from TodoEntity t where t.userId = ?1")
+    List<TodoEntity> findByUserIdQuery(String userId);
 }
